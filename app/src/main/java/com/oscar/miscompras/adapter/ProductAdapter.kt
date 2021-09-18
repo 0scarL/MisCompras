@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.miscompras.model.ProductoDb
+import com.example.miscompras.model.ProductModel
 import com.oscar.miscompras.databinding.ProductoItemLayoutBinding
 import com.oscar.miscompras.usermethods.OtherFunctions
 import com.squareup.picasso.Picasso
@@ -13,10 +13,10 @@ import kotlin.properties.Delegates
 
 class ProductoAdapter(
 
-    private var productoClickedListener: (ProductoDb) -> Unit)
+    private var productoClickedListener: (ProductModel) -> Unit)
     :RecyclerView.Adapter<ProductoAdapter.ProductoVH>() {
 
-    var producto: List<ProductoDb> by Delegates.observable(emptyList()){ _, old, new ->
+    var producto: List<ProductModel> by Delegates.observable(emptyList()){ _, old, new ->
         DiffUtil.calculateDiff(object : DiffUtil.Callback(){
             override fun getOldListSize(): Int = old.size
 
@@ -51,7 +51,7 @@ class ProductoAdapter(
 
     class ProductoVH(private val binding: ProductoItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(producto: ProductoDb) {
+        fun bind(producto: ProductModel) {
             binding.itemTitle.text = producto.title
             var linkImage = producto.thumbnail
             /**cambiamos a protocolo https, para poder ver las imagenes**/

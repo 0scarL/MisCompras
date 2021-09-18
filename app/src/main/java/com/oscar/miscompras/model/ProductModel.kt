@@ -1,6 +1,6 @@
 package com.example.miscompras.model
 
-data class ProductoDb(
+data class ProductModel(
     val accepts_mercadopago: Boolean?,
     val address: Address?,
     val attributes: List<Attribute>?,

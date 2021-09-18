@@ -2,7 +2,7 @@ package com.example.miscompras.model
 
 import com.google.gson.annotations.SerializedName
 
-data class ProductoDBResult(
+data class ProductModelResult(
     val available_filters: List<AvailableFilter>?,
     val available_sorts: List<AvailableSort>?,
     val country_default_time_zone: String?,
@@ -10,7 +10,7 @@ data class ProductoDBResult(
     val paging: Paging?,
     val query: String?,
     @SerializedName("results")
-    val productoDb: List<ProductoDb>?,
+    val productModel: List<ProductModel>?,
     val site_id: String?,
     val sort: Sort?
 )

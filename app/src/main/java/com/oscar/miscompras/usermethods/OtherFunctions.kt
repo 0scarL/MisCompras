@@ -1,5 +1,8 @@
 package com.oscar.miscompras.usermethods
 
+import com.example.miscompras.model.ProductModel
+import com.oscar.miscompras.database.ProductoEntity
+
 object OtherFunctions {
 
     fun corrigeLink (link: String):String{
@@ -10,4 +13,17 @@ object OtherFunctions {
             return linkfixed
         } else{ return link}
     }
+
+//    fun getProductFormat(productModel: ProductModel): List<ProductoEntity>{
+//        var resultado = mutableListOf<Any?>()
+//
+//        productModel.also {
+//            resultado.add(it.title)
+//            resultado.add(it.price)
+//            resultado.add(it.accepts_mercadopago)
+//
+//        }
+//        return resultado
+//
+//    }
 }
