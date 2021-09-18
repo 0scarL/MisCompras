@@ -1,7 +1,7 @@
 package com.oscar.miscompras.usermethods
 
 import com.example.miscompras.model.ProductModel
-import com.oscar.miscompras.database.ProductoEntity
+
 
 object OtherFunctions {
 

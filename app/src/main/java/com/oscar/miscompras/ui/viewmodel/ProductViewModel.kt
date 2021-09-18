@@ -1,4 +1,4 @@
-package com.oscar.miscompras.viewmodel
+package com.oscar.miscompras.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

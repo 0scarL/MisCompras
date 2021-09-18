@@ -1,23 +1,22 @@
-package com.oscar.miscompras.view
+package com.oscar.miscompras.ui.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
-import com.example.miscompras.service.ProductoCliente
+import com.example.miscompras.service.RetrofitCaller
 import com.oscar.miscompras.adapter.ProductoAdapter
-import com.oscar.miscompras.database.ProductoEntity
+
 import com.oscar.miscompras.databinding.ActivityMainBinding
-import com.oscar.miscompras.viewmodel.ProductViewModel
+import com.oscar.miscompras.ui.viewmodel.ProductViewModel
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    lateinit var productoEntity: ProductoEntity
+
     private val productViewModel : ProductViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,12 +27,12 @@ class MainActivity : AppCompatActivity() {
 
         productViewModel.listProductModel.observe(this,
             androidx.lifecycle.Observer {
-
+            binding.textMain01.text = it[1].title
         })
 
         var dateFormat = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
-        val currentDate = dateFormat.format(Date())
-        binding.textMain01.text = currentDate
+//        val currentDate = dateFormat.format(Date())
+//        binding.textMain01.text = currentDate
 
         var productoAdapter = ProductoAdapter(
 
@@ -43,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         binding.myRecycler.adapter = productoAdapter
 
         lifecycleScope.launch {
-            val productos = ProductoCliente.service.listarProductos("Motorola")
+            val productos = RetrofitCaller.service.listarProductos("Motorola")
             if (productos != null) {
                 //productoEntity = ProductoEntity(0, productos.productoDb)
                 /**carga la ultima busqueda en la db**/
