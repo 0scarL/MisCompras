@@ -30,10 +30,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+
+
         ProductsCarrier.search = "balon"
         productViewModel.onCreate()
-
-
 
 
 
