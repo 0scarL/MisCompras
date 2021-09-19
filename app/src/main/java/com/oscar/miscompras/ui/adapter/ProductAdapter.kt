@@ -1,4 +1,4 @@
-package com.oscar.miscompras.adapter
+package com.oscar.miscompras.ui.adapter
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miscompras.model.ProductModel
 import com.oscar.miscompras.databinding.ProductoItemLayoutBinding
-import com.oscar.miscompras.usermethods.OtherFunctions
+import com.oscar.miscompras.utils.OtherFunctions
 import com.squareup.picasso.Picasso
 import kotlin.properties.Delegates
 

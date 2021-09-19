@@ -1,5 +1,6 @@
-package com.example.miscompras.service
+package com.oscar.miscompras.utils
 
+import com.oscar.miscompras.data.net.ProductEndPoints
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -13,5 +14,5 @@ object RetrofitCaller {
             .build()
     }
 
-    val service = getRetrofit().create(ProductoEndPoints::class.java )
+    val service = getRetrofit().create(ProductEndPoints::class.java )
 }

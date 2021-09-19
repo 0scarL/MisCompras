@@ -1,4 +1,4 @@
-package com.oscar.miscompras.usermethods
+package com.oscar.miscompras.utils
 
 import junit.framework.TestCase
 
