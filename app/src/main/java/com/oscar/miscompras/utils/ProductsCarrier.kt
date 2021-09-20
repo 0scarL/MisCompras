@@ -6,4 +6,6 @@ object ProductsCarrier {
     var products : List<ProductModel> = emptyList()
 
     var search : String = ""
+
+    lateinit var oneProduct: ProductModel
 }

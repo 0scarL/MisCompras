@@ -3,53 +3,110 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
+    android:background="@drawable/fondo_blancorayas"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.MainActivity">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/my_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"
-        android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <TextView
-        android:id="@+id/text_view_main"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:textColor="@android:color/white"
-        android:background="@android:color/holo_blue_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    tools:context=".ui.view.MainActivity"
+    >
 
     <EditText
         android:id="@+id/edit_text_search"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/sombra_buscador"
+        android:padding="10dp"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toTopOf="@id/image_poster"
+        app:layout_constraintEnd_toStartOf="@+id/imageView_buscar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_view_main"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/imageView_buscar"
+        android:layout_width="55dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_busqueda"
+        android:background="@drawable/sombra_buscador"
+        app:layout_constraintBottom_toBottomOf="@+id/edit_text_search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/edit_text_search"
+        app:layout_constraintTop_toTopOf="@+id/edit_text_search"
+        app:srcCompat="@drawable/ic_busqueda_foreground" />
 
-    <ProgressBar
-        android:id="@+id/my_progressbar"
+    <ImageView
+        android:id="@+id/image_poster"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        app:layout_constraintBottom_toTopOf="@id/layout_carrito_publicidad2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_text_search" />
+
+    <ImageView
+        android:id="@+id/layout_carrito_publicidad1"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginBottom="3dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/publicidad5"
+        app:layout_constraintTop_toTopOf="@+id/layout_carrito_publicidad2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/layout_carrito_publicidad2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/layout_carrito_publicidad2"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginBottom="3dp"
+        android:layout_marginRight="6dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/publicidad4"
+        app:layout_constraintTop_toBottomOf="@+id/image_poster"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/layout_carrito_publicidad1"
+        android:contentDescription="TODO" />
+
+    <TextView
+        android:id="@+id/anuncio2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="120dp"
+        android:background="@drawable/sombra_textos"
+        android:fontFamily="sans-serif"
+        android:text="Por: Oscar Lizarazo"
+        android:textColor="#000"
+        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
-        android:visibility="gone"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/layout_carrito_publicidad1" />
+
+    <TextView
+        android:id="@+id/anuncio3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sombra_textos"
+        android:text="Anuncia Tu Producto"
+        android:layout_marginTop="15dp"
+        android:textColor="#ff0000"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/layout_carrito_publicidad2"
+        app:layout_constraintStart_toEndOf="@id/layout_carrito_publicidad2"
+        app:layout_constraintStart_toStartOf="@+id/layout_carrito_publicidad1"
+        app:layout_constraintTop_toTopOf="@id/layout_carrito_publicidad1" />
+
+
 
 
 

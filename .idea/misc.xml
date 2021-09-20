@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/OSCAR A/AndroidStudioProjects/MisCompras2/app/src/main/res/drawable/ic_busqueda.xml" value="0.19282051282051282" />
+        <entry key="..\:/Users/OSCAR A/AndroidStudioProjects/MisCompras2/app/src/main/res/drawable/sombra_buscador.xml" value="0.19282051282051282" />
+        <entry key="..\:/Users/OSCAR A/AndroidStudioProjects/MisCompras2/app/src/main/res/drawable/sombra_textos.xml" value="0.19282051282051282" />
+        <entry key="..\:/Users/OSCAR A/AndroidStudioProjects/MisCompras2/app/src/main/res/layout/activity_detail.xml" value="0.1" />
         <entry key="..\:/Users/OSCAR A/AndroidStudioProjects/MisCompras2/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/OSCAR A/AndroidStudioProjects/MisCompras2/app/src/main/res/layout/producto_item_layout.xml" value="0.1" />
+        <entry key="..\:/Users/OSCAR A/AndroidStudioProjects/MisCompras2/app/src/main/res/layout/activity_search_result.xml" value="0.1" />
+        <entry key="..\:/Users/OSCAR A/AndroidStudioProjects/MisCompras2/app/src/main/res/layout/producto_item_layout.xml" value="0.12" />
       </map>
     </option>
   </component>

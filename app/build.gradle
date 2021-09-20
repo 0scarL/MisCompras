@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id  'kotlin-kapt'
+
 }
 
 android {
@@ -68,5 +69,6 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
     //Activity
     implementation 'androidx.activity:activity-ktx:1.2.2'
+
 
 }

@@ -13,12 +13,12 @@ import kotlinx.coroutines.launch
 class ProductViewModel() : ViewModel() {
 
     val listProductModel = MutableLiveData<List<ProductModel>>()
+    val loading = MutableLiveData<Boolean>()
     var getProductsUseCase = GetProductsUseCase()
 
 
-
     fun onCreate() {
-
+        onProgressBar()
         viewModelScope.launch {
 
             var result = getProductsUseCase(ProductsCarrier.search)
@@ -26,9 +26,14 @@ class ProductViewModel() : ViewModel() {
             if (!result.isNullOrEmpty()) {
                 listProductModel.postValue(result!!)
             }
+            offProgresBar()
+
         }
     }
 
+    private fun onProgressBar() = loading.postValue(true)
+
+    private fun offProgresBar() = loading.postValue(false)
 
 
 }
