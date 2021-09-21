@@ -10,33 +10,35 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.miscompras.model.ProductModel
 import com.oscar.miscompras.domain.GetProductsUseCase
-import com.oscar.miscompras.utils.OtherFunctions
-import com.oscar.miscompras.utils.ProductsCarrier
-import com.oscar.miscompras.utils.ProductsCarrier.search
-
+import com.oscar.miscompras.ui.view.MainActivity
+import com.oscar.miscompras.utils.ProductCarrier
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ProductViewModel() : ViewModel() {
+@HiltViewModel
+class ProductViewModel @Inject constructor(
+    private val productCarrier: ProductCarrier,
+    private val getProductsUseCase : GetProductsUseCase,
+
+) : ViewModel() {
 
     val listProductModel = MutableLiveData<List<ProductModel>>()
     val loading = MutableLiveData<Boolean>()
-    var getProductsUseCase = GetProductsUseCase()
     val searchResult = MutableLiveData<Boolean>()
     lateinit var isConnected : LiveData<Boolean>
 
 
     fun onCreate() {
 
-
-
         onProgressBar()
         viewModelScope.launch {
 
 
-            var result = getProductsUseCase(ProductsCarrier.search)
+            val result = getProductsUseCase(productCarrier.search)
 
             if (!result.isNullOrEmpty()) {
-                listProductModel.postValue(result!!)
+                listProductModel.postValue(result)
                 searchResult.postValue(true)
             }else{
                 searchResult.postValue(false)

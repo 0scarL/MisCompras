@@ -2,15 +2,17 @@ package com.oscar.miscompras.data
 
 import com.example.miscompras.model.ProductModel
 import com.oscar.miscompras.data.net.ProductService
-import com.oscar.miscompras.utils.ProductsCarrier
+import com.oscar.miscompras.utils.ProductCarrier
+import javax.inject.Inject
 
-class Repository {
+class Repository @Inject constructor(
+    private val productService: ProductService,
+    private val productCarrier: ProductCarrier) {
 
-    private val productService = ProductService()
-
-    suspend fun getAllProducts(search: String): List<ProductModel>{
+    suspend fun getAllProducts(search: String): List<ProductModel> {
         val response = productService.getProducts(search)
-        ProductsCarrier.products = response
+        productCarrier.products = response
         return response
     }
+
 }

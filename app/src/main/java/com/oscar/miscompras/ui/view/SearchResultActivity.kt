@@ -1,27 +1,31 @@
 package com.oscar.miscompras.ui.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.example.miscompras.model.ProductModel
-import com.oscar.miscompras.databinding.ActivityMainBinding
 import com.oscar.miscompras.databinding.ActivitySearchResultBinding
 import com.oscar.miscompras.ui.adapter.ProductoAdapter
 import com.oscar.miscompras.ui.viewmodel.ProductViewModel
+import com.oscar.miscompras.utils.IsOnlineChecker
+import com.oscar.miscompras.utils.ProductCarrier
 import com.oscar.miscompras.utils.OtherFunctions
-import com.oscar.miscompras.utils.ProductsCarrier
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-class SearchResultActivity : AppCompatActivity() {
+@AndroidEntryPoint
+class SearchResultActivity: AppCompatActivity() {
+    @Inject lateinit var productCarrier: ProductCarrier
+
+    @Inject lateinit var isOnlineChecker: IsOnlineChecker
+
     private lateinit var binding: ActivitySearchResultBinding
-    private val productViewModel : ProductViewModel by viewModels()
 
+    private val productViewModel: ProductViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivitySearchResultBinding.inflate(layoutInflater)
@@ -30,13 +34,13 @@ class SearchResultActivity : AppCompatActivity() {
 
         setBarTitle()
 
-        if(OtherFunctions.isOnline(this))
+        if (isOnlineChecker.isOnline(this))
             productViewModel.onCreate()
-        else{
+        else {
             setNoConnectionImage()
         }
 
-        var productoAdapter = ProductoAdapter { producto -> navigateTo(producto)}
+        var productoAdapter = ProductoAdapter { producto -> navigateTo(producto) }
         binding.myRecycler.adapter = productoAdapter
 
 
@@ -51,8 +55,8 @@ class SearchResultActivity : AppCompatActivity() {
 
         productViewModel.listProductModel.observe(this,
             androidx.lifecycle.Observer { productos ->
-                if (!productos.isNullOrEmpty()){
-                    productoAdapter.producto = ProductsCarrier.products
+                if (!productos.isNullOrEmpty()) {
+                    productoAdapter.producto = productCarrier.products
                 }
             }
         )
@@ -60,16 +64,16 @@ class SearchResultActivity : AppCompatActivity() {
 
 
     private fun setBarTitle() {
-        setTitle("Busqueda con: ${ProductsCarrier.search}")
+        setTitle("Busqueda con: ${productCarrier.search}")
     }
 
-    private fun navigateTo(producto : ProductModel) {
+    private fun navigateTo(producto: ProductModel) {
         val intent = Intent(this, DetailActivity::class.java)
-        ProductsCarrier.oneProduct = producto
+        productCarrier.oneProduct = producto
         startActivity(intent)
     }
 
-    private fun setNoConnectionImage(){
+    private fun setNoConnectionImage() {
         Picasso.get()
             .load(OtherFunctions.NO_CONNECTION_IMAGE)
             .resize(360, 320)

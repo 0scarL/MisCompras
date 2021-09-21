@@ -2,23 +2,24 @@ package com.oscar.miscompras.ui.view
 
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
-import com.example.miscompras.model.Attribute
 import com.example.miscompras.model.ProductModel
 import com.oscar.miscompras.databinding.ActivityDetailBinding
+import com.oscar.miscompras.utils.ProductCarrier
 import com.oscar.miscompras.utils.OtherFunctions
-import com.oscar.miscompras.utils.ProductsCarrier
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-class DetailActivity : AppCompatActivity() {
+@AndroidEntryPoint
+class DetailActivity: AppCompatActivity() {
+    @Inject lateinit var productCarrier: ProductCarrier
 
     private lateinit var binding: ActivityDetailBinding
-
-    val SHOP_STORE_URL: String? = ProductsCarrier.oneProduct.permalink
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityDetailBinding.inflate(layoutInflater)
@@ -27,7 +28,9 @@ class DetailActivity : AppCompatActivity() {
 
         setTitle("Detalles de Producto")
 
-           ProductsCarrier.oneProduct.let { producto ->
+        val SHOP_STORE_URL: String? = productCarrier.oneProduct.permalink
+
+           productCarrier.oneProduct.let { producto ->
 
                binding.itemTitle.text = producto.title
                putImage(producto,binding)
