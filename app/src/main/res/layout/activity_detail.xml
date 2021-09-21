@@ -32,6 +32,8 @@
                 android:id="@+id/item_image"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:layout_marginBottom="7dp"
+                android:layout_marginTop="10dp"
                 android:contentDescription="Poster"
                 app:layout_constraintTop_toBottomOf="@+id/item_title"
                 app:layout_constraintBottom_toTopOf="@id/scroll_view"
@@ -44,7 +46,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:lines="2"
-                android:textColor="@color/colorShadowDark"
+                android:textColor="@color/white"
+                android:background="@drawable/sombra_buscador"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:text="Texto de la celda"
@@ -60,36 +63,63 @@
                 android:layout_height="25dp"
                 android:textStyle="bold"
                 android:text="$0.00"
-                android:padding="5dp"
-                android:background="@color/colorShadowDark"
+                android:padding="2dp"
+                android:background="@drawable/sombra_buscador"
                 android:textColor="@color/colorTextos"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:layout_marginRight="15dp"
                 app:layout_constraintTop_toBottomOf="@id/item_image"
                 app:layout_constraintEnd_toEndOf="@id/item_image"/>
+
+            <TextView
+                android:id="@+id/item_shop_here"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:text="Comprar"
+                android:textStyle="italic"
+                android:padding="3dp"
+                android:background="@drawable/sombra_buscador"
+                android:textColor="@color/colorShop"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toTopOf="@id/item_button"
+
+                app:layout_constraintEnd_toEndOf="@id/item_price"/>
+
+            <Button
+                android:id="@+id/item_button"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:elevation="5dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"
+                android:backgroundTint="@color/colorMoneda"
+                android:scaleType="centerCrop"
+                android:background="@drawable/compras_boton"
+                app:layout_constraintEnd_toEndOf="@id/item_price"
+                app:layout_constraintBottom_toBottomOf="@id/scroll_view"
+                />
 
             <ScrollView
                 android:id="@+id/scroll_view"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:clipToPadding="true"
+                android:layout_marginTop="18dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.578"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/item_image">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="0dp"
                     android:nestedScrollingEnabled="true"
-                    android:padding="15dp">
+                    android:padding="5dp">
 
                     <TextView
                         android:id="@+id/item_atibute"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
+                        android:layout_height="match_parent"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="@color/colorShadowDark"
                         tools:text="@tools:sample/lorem/random" />

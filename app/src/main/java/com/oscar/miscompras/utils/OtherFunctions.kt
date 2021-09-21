@@ -1,11 +1,10 @@
 package com.oscar.miscompras.utils
 
 import android.content.Context
-import android.util.Log
-import com.example.miscompras.model.ProductModel
-import com.oscar.miscompras.databinding.ProductoItemLayoutBinding
-import com.squareup.picasso.Picasso
-import java.nio.file.attribute.AttributeView
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
+import com.oscar.miscompras.ui.viewmodel.ProductViewModel
 
 
 object OtherFunctions {
@@ -30,6 +29,31 @@ object OtherFunctions {
 
     }
 
+    fun isOnline(context: Context): Boolean {
+        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val n = cm.activeNetwork
+            if (n != null) {
+                val nc = cm.getNetworkCapabilities(n)
+                //It will check for both wifi and cellular network
+                return nc!!.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) || nc.hasTransport(
+                    NetworkCapabilities.TRANSPORT_WIFI)
+            }
+            return false
+        } else {
+            val netInfo = cm.activeNetworkInfo
+            return netInfo != null && netInfo.isConnectedOrConnecting
+        }
+    }
+
+    /**definicion de constantes**/
+
+    const val NO_RESULTADO =
+        "No hay resultados para esta busqueda, intente nuevamente."
+
+    const val NO_CONNECTION_IMAGE: Int =
+        com.oscar.miscompras.R.drawable.error_conexion2
 }
 
 

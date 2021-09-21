@@ -8,10 +8,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="colorTextos">#ADDCE1E3</color>
-    <color name="colorMoneda">#AA1414</color>
+    <color name="colorMoneda">#F7D33324</color>
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="colorShadow">#BFD1D6D8</color>
     <color name="colorShadowDark">#BF1F2122</color>
+    <color name="colorShop">#B5FFEB3B</color>
+
 </resources>

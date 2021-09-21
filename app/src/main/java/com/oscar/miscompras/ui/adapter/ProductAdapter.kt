@@ -3,6 +3,8 @@ package com.oscar.miscompras.ui.adapter
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.text.bold
+import androidx.core.text.buildSpannedString
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miscompras.model.ProductModel
@@ -56,8 +58,23 @@ class ProductoAdapter(
 
         fun bind(producto: ProductModel) {
             binding.itemTitle.text = producto.title
+
             putImage(producto,binding)
-            binding.itemAtibute.text = producto.accepts_mercadopago.toString()
+
+            binding.itemAtibute.text = buildSpannedString {
+
+                bold { append("Cantidad disponible: ") }
+                if(producto.available_quantity!=null)
+                    appendLine(producto.available_quantity.toString())
+
+                bold { append("Acepta Mercadopago: ") }
+                if( producto.accepts_mercadopago!=null)
+                    appendLine(producto.accepts_mercadopago?.toString())
+            }
+
+            if(producto.price != null)binding.itemPrice.text = "Precio $${producto.price.toString()} "
+
+            if(producto.condition != null)binding.itemCondition.text = " ${producto.condition} "
 
         }
 

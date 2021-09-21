@@ -3,21 +3,37 @@ package com.oscar.miscompras.ui.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import com.oscar.miscompras.databinding.ActivityMainBinding
+import com.oscar.miscompras.utils.OtherFunctions
 import com.oscar.miscompras.utils.ProductsCarrier
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
 
+        binding.editTextSearch.setOnClickListener {
+            var conexion = OtherFunctions.isOnline(this)
+            Log.d("ActivityMain","hay conexion: ${conexion}")
+            Toast.makeText(this, "har red: ${conexion}", Toast.LENGTH_SHORT).show()
+        }
+
         binding.imageViewBuscar.setOnClickListener {
+            val search = binding.editTextSearch.text
+            if (!search.isNullOrEmpty()){
             ProductsCarrier.search = binding.editTextSearch.text.toString()
             navigateTo()
+            }else{
+                Toast.makeText(this, "El Campo de busqueda esta vacio!", Toast.LENGTH_SHORT).show()
+            }
         }
 
     }
@@ -26,7 +42,11 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, SearchResultActivity::class.java)
         startActivity(intent)
     }
+
+
+
 }
+
 
 
 //

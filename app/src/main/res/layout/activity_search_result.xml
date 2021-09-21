@@ -8,6 +8,32 @@
     android:layout_height="match_parent"
     tools:context=".ui.view.SearchResultActivity">
 
+    <TextView
+        android:id="@+id/item_search_error"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorShadowDark"
+        android:gravity="center"
+        android:lines="2"
+        android:textStyle="bold"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/item_image_connection"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="Poster"
+        app:srcCompat="@drawable/vacio"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
 
    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/my_recycler"
@@ -20,6 +46,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+
+
 
     <ProgressBar
         android:id="@+id/my_progressbar"
