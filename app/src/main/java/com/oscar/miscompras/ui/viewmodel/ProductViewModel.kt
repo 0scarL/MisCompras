@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -40,8 +41,10 @@ class ProductViewModel @Inject constructor(
             if (!result.isNullOrEmpty()) {
                 listProductModel.postValue(result)
                 searchResult.postValue(true)
+                Log.d("ProductViewModel","Asking Data: ${searchResult.toString()} ")
             }else{
                 searchResult.postValue(false)
+                Log.d("ProductViewModel","Asking Data: ${searchResult.toString()} ")
             }
             offProgresBar()
 
@@ -53,24 +56,6 @@ class ProductViewModel @Inject constructor(
     private fun onProgressBar() = loading.postValue(true)
 
     private fun offProgresBar() = loading.postValue(false)
-
-    fun isOnline(context: Context): Boolean {
-        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val n = cm.activeNetwork
-            if (n != null) {
-                val nc = cm.getNetworkCapabilities(n)
-                //It will check for both wifi and cellular network
-                return nc!!.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) || nc.hasTransport(
-                    NetworkCapabilities.TRANSPORT_WIFI)
-            }
-            return false
-        } else {
-            val netInfo = cm.activeNetworkInfo
-            return netInfo != null && netInfo.isConnectedOrConnecting
-        }
-    }
 
 
 }

@@ -88,7 +88,7 @@ private fun putImage(producto: ProductModel, binding: ProductoItemLayoutBinding)
     if (linkImage != null) {
         linkImage = OtherFunctions.getThumbLink(linkImage)
     } else {
-        Log.d("ProductoAdapter", "El Campo Thumbnail es null")
+        Log.d("ProductoAdapter", "Thumbnail field is null, or connection is lost")
     }
     Picasso.get()
         .load(linkImage)

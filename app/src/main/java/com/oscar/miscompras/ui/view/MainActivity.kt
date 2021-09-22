@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         binding.editTextSearch.setOnClickListener {
             val conexion = isOnlineChecker.isOnline(this)
             Log.d("ActivityMain","hay conexion: ${conexion}")
-            Toast.makeText(this, "har red: ${conexion}", Toast.LENGTH_SHORT).show()
+
         }
 
         binding.imageViewBuscar.setOnClickListener {
